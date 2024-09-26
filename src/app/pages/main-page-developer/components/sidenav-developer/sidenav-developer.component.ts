@@ -27,6 +27,7 @@ export class SidenavDeveloperComponent {
     localStorage.removeItem('id')
     localStorage.removeItem('accountType')
     localStorage.removeItem('userId')
+    localStorage.removeItem('recordId')
   }
   toggleExpand(){
     this.expand = !this.expand;

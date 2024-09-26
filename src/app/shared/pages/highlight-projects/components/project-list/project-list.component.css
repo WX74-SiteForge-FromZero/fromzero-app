@@ -42,7 +42,10 @@ input{
 .project-content{
   display: flex;
 }
-
+.project-content div p{
+  margin: 0;
+  white-space: pre-line;
+}
 .project-content img{
   max-height: 200px;
   margin-left: 100px;

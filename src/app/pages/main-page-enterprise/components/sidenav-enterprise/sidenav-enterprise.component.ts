@@ -40,6 +40,7 @@ export class SidenavEnterpriseComponent {
     localStorage.removeItem('id')
     localStorage.removeItem('accountType')
     localStorage.removeItem('userId');
+    localStorage.removeItem('recordId')
   }
 
 }

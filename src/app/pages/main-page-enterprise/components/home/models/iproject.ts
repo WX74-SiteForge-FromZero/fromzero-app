@@ -9,8 +9,17 @@ export interface IProject {
   state:string,
   progress:number,
   //ownerId:number,
-  company:{id:number},
-  developer:{id:number},
+  company:{
+    id:number,
+    companyName:string,
+    profileImgUrl:string
+  },
+  developer:{
+    id:number,
+    firstName:string,
+    lastName:string,
+    profileImgUrl:string
+  },
   candidates:ICandidate[],
   /*languages:IProgrammingLanguages[],
   frameworks:IFramework[],*/

@@ -37,25 +37,26 @@
 
     <ul class="project-list">
       <mat-card class="project-card" *ngFor="let project of filteredProjects">
-        <mat-card-header class="card-title">
+        <mat-card-header style="display: block">
           <mat-card-title>
-            {{ project.type }}: {{ project.name }}
+            <h1 style="text-align: center">{{ project.name }}</h1>
           </mat-card-title>
+          <mat-card-subtitle style="text-align: right">
+            por <strong> {{project.company.companyName}}</strong><br>
+            y <strong>{{project.developer.firstName}} {{project.developer.lastName}}</strong>
+          </mat-card-subtitle>
         </mat-card-header>
 
         <mat-card-content class="project-content">
           <div class="left-content">
             <mat-card-subtitle class="description-title">
-              Descripcion
+              <h2>Descripcion</h2>
             </mat-card-subtitle>
             <p>{{ project.description }}</p>
 
-            <!--<div class="stars">
-              <p>{{project.calification}}</p>
-              <mat-icon>star</mat-icon>
-            </div>-->
+
           </div>
-          <!--<img mat-card-image [src]="project."/>-->
+
         </mat-card-content>
       </mat-card>
     </ul>

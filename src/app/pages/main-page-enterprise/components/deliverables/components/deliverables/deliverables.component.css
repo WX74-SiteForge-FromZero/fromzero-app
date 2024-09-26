@@ -29,6 +29,10 @@
   justify-content: space-between;
   align-items: center;
 }
+.delv-description p{
+  margin: 0;
+  white-space: pre-line;
+}
 /*.delv-description, .delv-deadline-state{
   margin:auto;
 }*/

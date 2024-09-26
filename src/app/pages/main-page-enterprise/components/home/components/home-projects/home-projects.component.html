@@ -10,7 +10,7 @@
     </div>
     <mat-card-content>
       <div class="container w-full h-full overflow-auto flex flex-col gap-5">
-        <mat-card *ngIf="perfilUsuarioProjects?.length; else noProjects">
+        <mat-card *ngIf="perfilUsuarioProjects?.length; else noProjects" class="projects-container">
           <mat-card-content>
             <ng-container *ngFor="let project of perfilUsuarioProjects">
               <mat-card *ngIf="project.state === 'EN_BUSQUEDA'; else inProgress">
