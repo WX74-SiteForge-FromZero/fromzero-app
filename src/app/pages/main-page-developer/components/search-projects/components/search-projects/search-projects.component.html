@@ -1,0 +1,41 @@
+<div class="bloque-superior w-full h-full">
+  <ul class="developers-list flex flex-col gap-3 mt-20">
+    @for (project of projects; track project.id) {
+      <li>
+
+        <mat-card class="card-class look">
+
+          <div style="display: flex; justify-content: space-around">
+            <div>
+              <mat-card-header>
+                <mat-card-title>
+                  {{ project.name }}
+                </mat-card-title>
+                <mat-card-subtitle (click)="redirectToProfile(project.company.id)"
+                                   class="cursor-pointer hover:bg-gray-200">
+                  <h3 style="text-align: center">Ver empresa</h3>
+                </mat-card-subtitle>
+              </mat-card-header>
+
+            </div>
+          </div>
+
+          <mat-card-content>
+            <div style="display: flex;justify-content: space-around">
+              <div>
+                {{ project.description }}
+              </div>
+              <button mat-stroked-button class="mas-button" (click)="goToProject(project.id)">
+                Ver mas
+              </button>
+            </div>
+          </mat-card-content>
+
+        </mat-card>
+
+      </li>
+    }
+  </ul>
+
+</div>
+

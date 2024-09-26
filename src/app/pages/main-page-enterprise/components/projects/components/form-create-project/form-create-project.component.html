@@ -1,0 +1,107 @@
+<div class="w-  full h-3/5 ml-24 mt-10">
+  <div class="container w-4/6 h-5/6 bg-white border-2 border-gray-500 shadow-xl shadow-gray-600 md:w-3/4">
+    <mat-card>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="m-5">
+        <div class="p-3 flex justify-around">
+          <mat-form-field class="w-5/6 h-16">
+            <input matInput placeholder="Titulo del proyecto" formControlName="title">
+          </mat-form-field>
+        </div>
+        <hr>
+        <div class="p-3 flex flex-col">
+          <label for="description">Descripcion</label>
+          <mat-form-field class="h-full">
+            <textarea id="description" matInput formControlName="description"></textarea>
+          </mat-form-field>
+        </div>
+        <hr>
+        <div class="mb-3 flex justify-around md:flex-wrap sm:flex-wrap">
+          <div class="mb-3">
+            <div class="flex flex-col">
+              <label for="tipoPagina">Tipo de Proyecto</label>
+              <mat-form-field>
+                <mat-select id="tipoPagina" formControlName="projectType">
+                  <!--<mat-option value="Landing Page">Landing Page</mat-option>
+                  <mat-option value="Aplicacion web">Aplicacion web</mat-option>
+                  <mat-option value="Aplicacion de Escritorio">Aplicacion de Escritorio</mat-option>-->
+                  <mat-option value="LANDING_PAGE">Landing Page</mat-option>
+                  <mat-option value="WEB_APPLICATION">Aplicacion web</mat-option>
+                  <mat-option value="DESKTOP_APPLICATION">Aplicacion de Escritorio</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <hr>
+            <div class="flex flex-col">
+              <label for="tecnologias">Tecnologías</label>
+              <mat-checkbox id="tecnologias" [formControl]="hideTechnologies" #techCheckbox>Tecnologías sin determinar</mat-checkbox>
+              <div class="flex gap-3">
+                <div class="flex flex-col">
+                  <label>Lenguajes</label>
+                  <mat-form-field>
+                    <mat-select id="lenguajesProgramacion"
+                                [disabled]="techCheckbox.checked"
+                                (selectionChange)="selectedLanguages.push($event.value)">
+                      @for(language of programmingLanguagesList;track language.id){
+                        <mat-option (click)="addingLanguages(language.id,language.name)"
+                                    [value]="language.name">
+                          {{language.name}}
+                        </mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                  <div *ngFor="let language of selectedLanguages; let i = index" class="flex justify-between">
+                    <p>{{ language }}</p>
+                    <mat-icon class="text-red-600" (click)="removeSelectedLanguage(i, selectedLanguages)">delete</mat-icon>
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <label>Frameworks</label>
+                  <mat-form-field>
+                    <mat-select id="frameworksProgramacion"
+                                [disabled]="techCheckbox.checked"
+                                (selectionChange)="selectedFrameworksTemp.push($event.value)">
+                      @for (framework of frameworksList;track framework.id){
+                        <mat-option (click)="addingFrameworks(framework.id,framework.name)"
+                                    [value]="framework.name">
+                          {{framework.name}}
+                        </mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                  <div *ngFor="let frameworks of selectedFrameworksTemp; let i = index" class="flex justify-between">
+                    <p>{{ frameworks }}</p>
+                    <mat-icon class="text-red-600" (click)="removeSelectedFramework(i, selectedFrameworksTemp)">delete</mat-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div>
+              <h3>Recursos y Documentación</h3>
+              <input type="file" (change)="onFilesSelected($event)" accept=".pdf, image/*" multiple>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="flex flex-col">
+              <label for="presupuesto">Presupuesto</label>
+              <mat-form-field>
+                <textarea id="presupuesto" matInput formControlName="presupuesto"></textarea>
+              </mat-form-field>
+            </div>
+            <hr>
+            <div class="flex flex-col w-full">
+              <label for="procesosYMetologias">Procesos y Metogologias de desarrollo</label>
+              <mat-checkbox id="procesosYMetologias" [formControl]="hideMethodologies" #processCheckbox>Agregar procesos y metodologias por defecto</mat-checkbox>
+              <mat-form-field *ngIf="!processCheckbox.checked">
+                <textarea matInput formControlName="procesos"></textarea>
+              </mat-form-field>
+            </div>
+            <div>
+              <button mat-flat-button color="primary" class="rounded-full">Publicar Proyecto</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>

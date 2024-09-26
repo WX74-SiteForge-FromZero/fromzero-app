@@ -1,0 +1,5 @@
+.mat-mdc-dialog-content.mdc-dialog__content.custom-dialog-content {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between !important;
+}

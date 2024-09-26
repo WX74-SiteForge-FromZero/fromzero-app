@@ -1,0 +1,7 @@
+app-home-projects, app-home-profile {
+  flex: 1 0 0;
+}
+
+.flex {
+  align-items: stretch;
+}

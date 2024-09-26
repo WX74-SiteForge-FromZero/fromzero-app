@@ -1,0 +1,54 @@
+.title{
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.title h1{
+  margin-bottom: 0;
+}
+
+input{
+  display: block;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  padding: 8px 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons button {
+  margin: 0 10px;
+}
+
+.project-list{
+  width: 70%;
+  min-width: 600px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.project-card{
+  margin-bottom: 20px;
+}
+
+.project-content{
+  display: flex;
+}
+
+.project-content img{
+  max-height: 200px;
+  margin-left: 100px;
+}
+
+.stars{
+  color: orange;
+}
+

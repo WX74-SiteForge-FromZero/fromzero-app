@@ -1,0 +1,65 @@
+<div class="w-4/5 h-full mt-10">
+  <div class="h-3/4 overflow-x-hidden overflow-y-auto">
+    <div class="title">
+      <h1>Proyectos Destacados</h1>
+      <h3>Explora mas de 100 proyectos realizados</h3>
+    </div>
+
+    <input placeholder="Busqueda de proyectos">
+
+
+    <div class="buttons">
+      <button mat-stroked-button class="b-web-app"
+              (click)="filterProjects('WEB_APPLICATION')">
+        Aplicacion Web
+      </button>
+
+      <button mat-stroked-button class="b-mobile-app"
+              (click)="filterProjects('LANDING_PAGE')">
+        Landing Page
+      </button>
+
+      <button mat-stroked-button class="b-design-system"
+              (click)="filterProjects('DESKTOP_APPLICATION')">
+        Aplicacion de Escritorio
+      </button>
+
+      <button mat-stroked-button class="b-data-analytics"
+              (click)="filterProjects('MOBILE_APPLICATION')">
+        Aplicación Móvil
+      </button>
+
+      <button mat-stroked-button class="b-borrar-filtros"
+              (click)="filterProjects('Borrar Filtros')">
+        Borrar Filtros
+      </button>
+    </div>
+
+    <ul class="project-list">
+      <mat-card class="project-card" *ngFor="let project of filteredProjects">
+        <mat-card-header class="card-title">
+          <mat-card-title>
+            {{ project.type }}: {{ project.name }}
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="project-content">
+          <div class="left-content">
+            <mat-card-subtitle class="description-title">
+              Descripcion
+            </mat-card-subtitle>
+            <p>{{ project.description }}</p>
+
+            <!--<div class="stars">
+              <p>{{project.calification}}</p>
+              <mat-icon>star</mat-icon>
+            </div>-->
+          </div>
+          <!--<img mat-card-image [src]="project."/>-->
+        </mat-card-content>
+      </mat-card>
+    </ul>
+
+
+  </div>
+</div>

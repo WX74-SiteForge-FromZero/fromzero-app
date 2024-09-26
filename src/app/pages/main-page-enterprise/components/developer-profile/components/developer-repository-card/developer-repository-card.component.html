@@ -1,0 +1,45 @@
+<div class="container w-2/3 h-full">
+  <mat-card class="project-card">
+    <mat-card-header>
+      <mat-card-title>
+        <p class="text-blue-600 ">Repositorio</p>
+      </mat-card-title>
+    </mat-card-header>
+    <div class="flex justify-center">
+      <hr class="w-5/6 text-gray-500">
+    </div>
+    <mat-card-content>
+      <div class="container w-full h-full overflow-auto flex flex-col gap-5">
+        <mat-card *ngIf="perfilDeveloperRepository?.length; else noProjects">
+          <mat-card-content>
+            <ng-container *ngFor="let project of perfilDeveloperRepository">
+              <mat-card>
+                <mat-card-header>
+                  <mat-card-title>
+                    <a>
+                      <p class="text-black text-xs font-bold">{{ project.title }}</p>
+                    </a>
+                  </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <a href="{{project.urlPage}}" target="_blank" class="text-purple-700 underline">Link a la pagina</a>
+                </mat-card-content>
+              </mat-card>
+            </ng-container>
+          </mat-card-content>
+        </mat-card>
+        <ng-template #noProjects>
+          <div *ngFor="let empty of emptyProjects">
+            <mat-card class="gray-card">
+              <mat-card-header>
+                <mat-card-title>
+                  <p class="text-gray-500">Proyecto vacio</p>
+                </mat-card-title>
+              </mat-card-header>
+            </mat-card>
+          </div>
+        </ng-template>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,33 @@
+<div class="bloque-superior w-full h-full ">
+  <ul class="developers-list flex flex-col gap-3 mt-20">
+    @for (developer of developers; track developer.id){
+      <li>
+
+        <mat-card class="card-class look">
+
+          <div style="display: flex; justify-content: space-around">
+            <div>
+              <img mat-card-sm-image [src]="developer.profileImgUrl"
+                   [alt]="developer.firstName"/>
+            </div>
+            <div>
+              <mat-card-header>
+                <mat-card-title (click)="redirectToProfile(developer.id)" class="cursor-pointer hover:bg-gray-200">
+                 {{developer.firstName}} {{developer.lastName}}
+                </mat-card-title>
+              </mat-card-header>
+            </div>
+          </div>
+
+          <mat-card-content>
+            <div style="text-align: center">
+            {{developer.description}}
+            </div>
+          </mat-card-content>
+
+        </mat-card>
+
+      </li>
+    }
+  </ul>
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="title">
+    <h1>{{ projectName }}</h1>
+    <h3>{{ enterpriseName }}</h3>
+  </div>
+
+  <mat-card class="delv-card">
+
+    <mat-card-header class="delv-title">
+      <mat-card-title>
+        Entregable: {{ deliverable?.name }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        Estado: {{deliverable?.state}}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="delv-description">
+      <mat-card-subtitle class="description-title">
+        Descripcion de Entrega
+      </mat-card-subtitle>
+      <p>{{ deliverable?.description }}</p>
+      <div class="divider"></div>
+      <div>
+        <p>Mensaje del desarrollador</p>
+        <p>{{deliverable?.developerMessage}}</p>
+      </div>
+      <div class="divider"></div>
+      <h2 class="files-title">Archivos</h2>
+      <mat-card class="files-card"/>
+
+      <button mat-stroked-button class="delv-button" [disabled]="!deliverable?.developerMessage"
+              (click)="openDialog()">
+        Aprobar Entrega
+      </button>
+
+    </mat-card-content>
+
+  </mat-card>
+
+</div>

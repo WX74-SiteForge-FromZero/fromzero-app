@@ -1,0 +1,7 @@
+app-developer-profile-card, app-developer-repository-card {
+  flex: 1 0 0;
+}
+
+.flex {
+  align-items: stretch;
+}

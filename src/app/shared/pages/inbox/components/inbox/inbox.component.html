@@ -1,0 +1,31 @@
+<div class="bloque-superior w-full h-full">
+  <h1 style="text-align: right;padding: 25px">
+    Mensajes recibidos: {{ messagesList?.length }}
+  </h1>
+  <ul class="developers-list flex flex-col gap-3 h-3/4 mr-10 overflow-x-hidden overflow-y-auto">
+    @for (message of messagesList; track message.id) {
+      <li>
+        <mat-card class="card-class">
+          <mat-card-header style="display: block">
+            <mat-card-title>
+              <div class="flex flex-row justify-between">
+                <div>
+                  De: {{ message?.senderEmail }}
+                </div>
+                <div>
+                  Enviado: {{ message?.sentTime }}
+                </div>
+              </div>
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content style="margin-top: 20px">
+            <h2>{{message?.subject}}</h2>
+            <h4>{{message?.emailBody}}</h4>
+          </mat-card-content>
+
+        </mat-card>
+      </li>
+    }
+  </ul>
+</div>

@@ -1,0 +1,27 @@
+.mat-mdc-card-header{
+  justify-content: space-between;
+  margin-left: 7%;
+  width: 85%;
+  gap: 5vh;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  flex-direction: row;
+}
+
+.mat-mdc-card-content{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  width: 85%;
+  align-items: start;
+  margin-left: 7%;
+}
+
+.mat-mdc-card.mdc-card.gray-card {
+  background-color: #ccc;
+}
+
+.mat-mdc-card.mdc-card{
+  height: 100%;
+}

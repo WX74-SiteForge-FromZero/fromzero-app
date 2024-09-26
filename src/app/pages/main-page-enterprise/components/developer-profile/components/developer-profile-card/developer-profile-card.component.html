@@ -1,0 +1,77 @@
+<div class="container w-full h-full">
+  <mat-card>
+    <mat-card-header class="flex justify-between mb-3 align-middle items-center">
+      <mat-card-title>{{perfilDeveloper?.firstName}}</mat-card-title>
+      <img mat-card-image :src="{{perfilDeveloper?.profileImgUrl}}" alt="Perfil de usuario" class="w-12 h-12">
+      <a routerLink="/app/main/shared/message">
+        <mat-icon class="text-purple-500 hover:bg-gray-200">message</mat-icon>
+      </a>
+    </mat-card-header>
+    <div class="flex justify-center">
+      <hr class="w-5/6 text-gray-500">
+    </div>
+    <mat-card-content>
+      <div class="flex gap-2">
+        <div>
+          <p class="text-gray-500 font-bold">Resumen</p>
+          <p>{{perfilDeveloper?.description}}</p>
+        </div>
+      </div>
+    </mat-card-content>
+    <div class="flex justify-center">
+      <hr class="w-5/6 text-gray-500">
+    </div>
+    <mat-card-content>
+      <div class="flex gap-2 justify-between w-full">
+        <div class="flex justify-between gap-10 w-11/12 mt-3">
+          <p class="text-gray-500 font-bold">País</p>
+          <p>{{perfilDeveloper?.country}}</p>
+        </div>
+      </div>
+    </mat-card-content>
+    <div class="flex justify-center">
+      <hr class="w-5/6 text-gray-500">
+    </div>
+    <mat-card-content>
+      <div class="flex gap-2 justify-between w-full">
+        <div class="flex justify-between w-11/12 mt-3">
+          <p class="text-gray-500 font-bold">Telefono</p>
+          <p>{{perfilDeveloper?.phone}}</p>
+        </div>
+      </div>
+    </mat-card-content>
+    <div class="flex justify-center">
+      <hr class="w-5/6 text-gray-500">
+    </div>
+    <mat-card-content>
+      <div class="flex gap-2 justify-between w-full">
+        <div class="flex justify-between gap-10 w-11/12 mt-3">
+          <p class="text-gray-500 font-bold">Correo</p>
+          <p>{{perfilDeveloper?.email}}</p>
+        </div>
+      </div>
+    </mat-card-content>
+    <div class="flex justify-center">
+      <hr class="w-5/6 text-gray-500">
+    </div>
+    <mat-card-content>
+      <div class="flex gap-2 justify-between w-full">
+        <div class="flex justify-between gap-10 w-11/12 mt-3">
+          <p class="text-gray-500 font-bold">Proyectos Realizados</p>
+          <p><strong>{{perfilDeveloper?.completedProjects}}</strong></p>
+        </div>
+      </div>
+    </mat-card-content>
+    <div class="flex justify-center">
+      <hr class="w-5/6 text-gray-500">
+    </div>
+    <mat-card-content>
+      <div class="flex gap-2 justify-between w-full">
+        <div class="flex justify-between gap-10 w-11/12 mt-3">
+          <p class="text-gray-500 font-bold">Especialidades</p>
+          <p><strong>{{perfilDeveloper?.specialties}}</strong></p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
