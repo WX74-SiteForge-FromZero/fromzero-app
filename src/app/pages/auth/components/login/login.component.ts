@@ -3,7 +3,6 @@ import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthApiService} from "../../services/auth-api.service";
 import {ProfileService} from "../../../../core/services/profiles/profile.service";
-import {forkJoin} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -53,7 +52,7 @@ export class LoginComponent {
               }else if (accountType==='DEVELOPER'){
                 this._profileService.getDeveloperIdByEmail(user.email).subscribe(response1=>{
                   profileId=response1
-                  this._profileService.getCompanyRecordIdByEmail(user.email).subscribe((response2:any)=>{
+                  this._profileService.getDeveloperRecordIdByEmail(user.email).subscribe((response2:any)=>{
                     profileRecordId=response2.profileId;
                     localStorage.setItem('accountType','D')
                     localStorage.setItem('id',profileId.toString())
