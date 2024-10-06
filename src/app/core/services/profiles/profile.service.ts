@@ -21,43 +21,30 @@ export class ProfileService extends BaseService{
     return this._http.get<IDeveloperProfileTemp[]>(this.url+'developers',this.httpOptions)
   }
 
-  getEnterpriseProfileById(id: number): Observable<IEnterpriseProfileTemp> {
-    return this._http.get<IEnterpriseProfileTemp>(this.url+'company/profile/'+id,this.httpOptions);
+  getEnterpriseProfileById(id: any): Observable<IEnterpriseProfileTemp> {
+    return this._http.get<IEnterpriseProfileTemp>(this.url+'company/'+id,this.httpOptions);
   }
 
-  getDeveloperProfileById(id: number): Observable<IDeveloperProfileTemp> {
-    return this._http.get<IDeveloperProfileTemp>(this.url + 'developer/profile/' + id,this.httpOptions);
+  getDeveloperProfileById(id: any): Observable<IDeveloperProfileTemp> {
+    return this._http.get<IDeveloperProfileTemp>(this.url + 'developer/' + id,this.httpOptions);
   }
 
   updateDeveloperProfile(id: number, updateDeveloper: any): Observable<any>{
-    const url = this.url + 'developer/profile/' + id;
+    const url = this.url + 'developer/' + id;
     return this._http.put(url, updateDeveloper,this.httpOptions);
   }
 
   updateEnterpriseProfile(id: number, updateEnterprise: any): Observable<any>{
-    const url = this.url + 'company/profile/' + id;
+    const url = this.url + 'company/' + id;
     return this._http.put(url, updateEnterprise,this.httpOptions);
   }
 
-  /*getDeveloperProfileIdByEmail(email:string){
-    return this._http.get(`${this.url}developer/${email}`)
+  getDeveloperDataByEmail(email:string){
+    return this._http.get(`${this.url}developer-data/${email}`)
   }
 
-  getCompanyProfileIdByEmail(email:string){
-    return this._http.get(`${this.url}company/${email}`)
-  }*/
-//----------------
-  getCompanyIdByEmail(email:string){
-    return this._http.get(`${this.url}company-id/${email}`)
-  }
-  getDeveloperIdByEmail(email:string){
-    return this._http.get(`${this.url}developer-id/${email}`)
+  getCompanyDataByEmail(email:string){
+    return this._http.get(`${this.url}company-data/${email}`)
   }
 
-  getDeveloperRecordIdByEmail(email:string){
-    return this._http.get(`${this.url}developer/${email}`)
-  }
-  getCompanyRecordIdByEmail(email:string){
-    return this._http.get(`${this.url}company/${email}`)
-  }
 }

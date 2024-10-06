@@ -24,54 +24,60 @@ export class LoginComponent {
   validateLogin(): void {
     const emailControl = this.loginForm.get('email');
     const passwordControl = this.loginForm.get('password');
-    let accountType:string
-    let profileId:any
-    let profileRecordId:string
+    let accountType: string
+    let profileId: any
+    let profileRecordId: string
 
     if (emailControl && passwordControl) {
       const email = emailControl.value;
       const password = passwordControl.value;
 
-      if (email !== null && password !== null) {
-        this._authService.validateUser(email, password).subscribe(user => {
-          if (user) {
+      if ((email !== null && email !== "") && (password !== null && password !== "")) {
+
+        this._authService.validateUser(email, password).subscribe({
+          next: (user) => {
             localStorage.setItem('token', user.token)
             this._authService.getUserById(user.id).subscribe(response => {
               accountType = response.roles.at(0) || '';
-              if (accountType==='COMPANY'){
-                this._profileService.getCompanyIdByEmail(user.email).subscribe(response1=>{
-                  profileId=response1;
-                  this._profileService.getCompanyRecordIdByEmail(user.email).subscribe((response2:any)=>{
-                    profileRecordId=response2.profileId;
-                    localStorage.setItem('accountType','E')
-                    localStorage.setItem('id',profileId.toString())
-                    localStorage.setItem('recordId',profileRecordId)
-                    this.router.navigate(['/app/main/home']);
-                  })
+              if (accountType === 'COMPANY') {
+
+                this._profileService.getCompanyDataByEmail(user.email).subscribe((res: any) => {
+                  profileId = res.id
+                  profileRecordId = res.recordId
+
+                  localStorage.setItem('accountType', 'E')
+                  localStorage.setItem('id', profileId.toString())
+                  localStorage.setItem('recordId', profileRecordId)
+                  this.router.navigate(['/app/main/home']);
                 })
-              }else if (accountType==='DEVELOPER'){
-                this._profileService.getDeveloperIdByEmail(user.email).subscribe(response1=>{
-                  profileId=response1
-                  this._profileService.getDeveloperRecordIdByEmail(user.email).subscribe((response2:any)=>{
-                    profileRecordId=response2.profileId;
-                    localStorage.setItem('accountType','D')
-                    localStorage.setItem('id',profileId.toString())
-                    localStorage.setItem('recordId',profileRecordId)
-                    this.router.navigate(['/app-developer/main/home']);
-                  })
+
+              } else if (accountType === 'DEVELOPER') {
+
+                this._profileService.getDeveloperDataByEmail(user.email).subscribe((res: any) => {
+                  profileId = res.id
+                  profileRecordId = res.recordId
+
+                  localStorage.setItem('accountType', 'D')
+                  localStorage.setItem('id', profileId.toString())
+                  localStorage.setItem('recordId', profileRecordId)
+                  this.router.navigate(['/app-developer/main/home']);
                 })
+
               }
             })
-
-          } else {
+          },
+          error: (err) => {
             console.error('Invalid username or password');
           }
-        });
+        })
+
       } else {
         console.error('Username or password is null');
       }
+
     } else {
       console.error('Username or password control does not exist');
     }
+
   }
 }

@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  accountCreated = false;
+  accountCreated = 0;
 
   registerForm = new FormGroup({
     email: new FormControl(''),
@@ -30,34 +30,46 @@ export class RegisterComponent {
     const developerNameControl = this.registerForm.get('developerName');
     const developerLastNameControl = this.registerForm.get('developerLastName');
     const passwordControl = this.registerForm.get('password');
-    const accountTypeControl=this.registerForm.get('accountType')
+    const accountTypeControl = this.registerForm.get('accountType')
 
-    if(accountTypeControl) {
+    if (accountTypeControl) {
       const accountType = accountTypeControl.value;
 
       if (accountType === "0" && emailControl && passwordControl && enterpriseNameControl) {
-        const email = emailControl.value;
-        const password = passwordControl.value;
-        const enterpriseName = enterpriseNameControl.value;
+        const email = emailControl.value ?? "";
+        const password = passwordControl.value ?? "";
+        const enterpriseName = enterpriseNameControl.value ?? "";
 
-        if (email !== null && password !== null && enterpriseName !== null) {
-          this.authService.createEnterpriseUser(email, password, enterpriseName).subscribe(() => {
-            this.accountCreated = true;
-          });
-        }
-      }
-
-      else if (accountType === "1" && emailControl && passwordControl && developerNameControl && developerLastNameControl) {
-        const email = emailControl.value;
-        const password = passwordControl.value;
-        const firstName = developerNameControl.value;
-        const lastName = developerLastNameControl.value;
-        if (email !== null && password !== null && firstName !== null && lastName !== null) {
-          this.authService.createDeveloperUser(email, password, firstName, lastName).subscribe(() => {
-            this.accountCreated = true;
+        if (email !== "" && password !== "" && enterpriseName !== "") {
+          this.authService.createEnterpriseUser(email, password, enterpriseName).subscribe({
+            next: () => {
+              this.accountCreated = 1;
+            },
+            error: () => {
+              this.accountCreated = 2
+            }
           })
+        } else {
+          console.error("Ingrese datos validos")
         }
-      }
+      } else if (accountType === "1" && emailControl && passwordControl && developerNameControl && developerLastNameControl) {
+        const email = emailControl.value ?? "";
+        const password = passwordControl.value ?? "";
+        const firstName = developerNameControl.value ?? "";
+        const lastName = developerLastNameControl.value ?? "";
+        if (email !== "" && password !== "" && firstName !== "" && lastName !== "") {
+          this.authService.createDeveloperUser(email, password, firstName, lastName).subscribe({
+            next: () => {
+              this.accountCreated = 1;
+            },
+            error: () => {
+              this.accountCreated = 2
+            }
+          })
+        } else {
+          console.error("Ingrese datos validos")
+        }
+      } else console.log("Seleccione un tipo de usuario")
     }
   }
 
