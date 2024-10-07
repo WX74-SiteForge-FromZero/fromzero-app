@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {IEnterpriseProfileUpdate} from "../../models/enterprise-profile-update.model";
 import {ProfileService} from "../../../../../../core/services/profiles/profile.service";
-import {IEnterpriseProfileTemp} from "../../../../../../core/models/ienterprise-profile";
+import {ICompanyProfile} from "../../../../../../core/models/icompany-profile";
 
 @Component({
   selector: 'app-edit-profile-dialog',
@@ -12,7 +12,7 @@ import {IEnterpriseProfileTemp} from "../../../../../../core/models/ienterprise-
 export class EditProfileDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<EditProfileDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IEnterpriseProfileTemp,
+    @Inject(MAT_DIALOG_DATA) public data: ICompanyProfile,
     private _profileService:ProfileService) {}
 
   onNoClick(): void {

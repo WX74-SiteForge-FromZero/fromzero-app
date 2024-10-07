@@ -7,15 +7,4 @@ import { Component } from '@angular/core';
 })
 export class MainPageComponent {
   title = 'FromZero-App';
-
-  isSidenavExpanded=false;
-  screenWidth=0;
-
-  getContentClass():string{
-    let styleClass='';
-    if(this.isSidenavExpanded && this.screenWidth >768 ) {
-      styleClass = 'content-trimmed';
-    }
-    return styleClass;
-  }
 }

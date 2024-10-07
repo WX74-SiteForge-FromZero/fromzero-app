@@ -1,4 +1,4 @@
-export interface IEnterpriseProfileTemp {
+export interface ICompanyProfile {
   id:number,
   companyName:string,
   email:string,

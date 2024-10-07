@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {BaseService} from "../shared/base.service";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {IEnterpriseProfileTemp} from "../../models/ienterprise-profile";
+import {ICompanyProfile} from "../../models/icompany-profile";
 import {IDeveloperProfileTemp} from "../../models/ideveloper-profile";
 
 @Injectable({
@@ -21,8 +21,8 @@ export class ProfileService extends BaseService{
     return this._http.get<IDeveloperProfileTemp[]>(this.url+'developers',this.httpOptions)
   }
 
-  getEnterpriseProfileById(id: any): Observable<IEnterpriseProfileTemp> {
-    return this._http.get<IEnterpriseProfileTemp>(this.url+'company/'+id,this.httpOptions);
+  getEnterpriseProfileById(id: any): Observable<ICompanyProfile> {
+    return this._http.get<ICompanyProfile>(this.url+'company/'+id,this.httpOptions);
   }
 
   getDeveloperProfileById(id: any): Observable<IDeveloperProfileTemp> {

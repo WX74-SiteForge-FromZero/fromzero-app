@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { EditProfileDialogComponent } from '../edit-profile-dialog/edit-profile-dialog.component';
-import {IEnterpriseProfileTemp} from "../../../../../../core/models/ienterprise-profile";
+import {ICompanyProfile} from "../../../../../../core/models/icompany-profile";
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
   styleUrl: './home-profile.component.css'
 })
 export class HomeProfileComponent {
-  @Input() perfilUsuario!:IEnterpriseProfileTemp
+  @Input() perfilUsuario!:ICompanyProfile
 
   constructor(private router:Router,public dialog: MatDialog) {}
 

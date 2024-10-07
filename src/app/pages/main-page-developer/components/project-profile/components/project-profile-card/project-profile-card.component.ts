@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {IEnterpriseProfileTemp} from "../../../../../../core/models/ienterprise-profile";
+import {ICompanyProfile} from "../../../../../../core/models/icompany-profile";
 
 @Component({
   selector: 'app-project-profile-card',
@@ -7,7 +7,7 @@ import {IEnterpriseProfileTemp} from "../../../../../../core/models/ienterprise-
   styleUrl: './project-profile-card.component.css'
 })
 export class ProjectProfileCardComponent {
-  @Input() perfilEnterprise!: IEnterpriseProfileTemp;
+  @Input() perfilEnterprise!: ICompanyProfile;
 
   constructor() { }
 

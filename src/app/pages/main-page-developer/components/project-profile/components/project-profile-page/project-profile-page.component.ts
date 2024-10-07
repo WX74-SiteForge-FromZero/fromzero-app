@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {AuthApiService} from "../../../../../auth/services/auth-api.service";
-import {IEnterpriseProfileTemp} from "../../../../../../core/models/ienterprise-profile";
+import {ICompanyProfile} from "../../../../../../core/models/icompany-profile";
 import {ProfileService} from "../../../../../../core/services/profiles/profile.service";
 
 @Component({
@@ -10,7 +10,7 @@ import {ProfileService} from "../../../../../../core/services/profiles/profile.s
   styleUrl: './project-profile-page.component.css'
 })
 export class ProjectProfilePageComponent implements OnInit{
-  enterpriseProfile!: IEnterpriseProfileTemp;
+  enterpriseProfile!: ICompanyProfile;
 
   constructor(
     private route: ActivatedRoute,
