@@ -11,8 +11,6 @@ import {
   styleUrl: './dev-deliverables.component.css'
 })
 export class DevDeliverablesComponent implements OnInit{
-  enterprise?:any;
-  projectname?:string;
 
   deliverables!:IDeliverable[];
 
@@ -30,10 +28,6 @@ export class DevDeliverablesComponent implements OnInit{
 
       this.delvsApi.getAllDeliverablesByProjectId(this.projectId).subscribe(deliverables=>{
         this.deliverables=deliverables;
-        if (deliverables.length > 0){
-          this.projectname=deliverables[0]?.project?.name;
-          this.enterprise=deliverables[0]?.project?.company?.companyName;
-        }
       })
     })
   }

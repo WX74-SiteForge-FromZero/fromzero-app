@@ -1,8 +1,6 @@
 <div class="delvs-container">
   <div class="delvs-title">
     <h1>Cronograma de entregables</h1>
-    <h3>{{ projectname }}</h3>
-    <h5>{{ enterprise }}</h5>
   </div>
   @if(deliverables?.length){
     <div class="delvs-content">
@@ -13,7 +11,7 @@
               <a [routerLink]="goToReviewDelv(delv.id)">
                 <mat-card-header>
                   <mat-card-title>
-                    Entregable: {{ delv.name }}
+                    Entregable {{$index+1}}: {{ delv.name }}
                   </mat-card-title>
                 </mat-card-header>
               </a>
@@ -25,14 +23,12 @@
                   </div>
                   <div class="delv-deadline-state">
                     <div>
-                      <img src="../../../../../assets/deliverables-images/expiration-date.png" alt="expiration date">
+                      <mat-icon>access_time_filled</mat-icon>
                       <p>Fecha límite</p>
-                      <!--<p>{{delv.date | date:'shortDate'}}</p>-->
                       <p>{{delv.date}}</p>
                     </div>
                     <div>
                       @if (delv.state === 'COMPLETADO') {
-                        <!--<img src="../../../../../../../assets/deliverables-images/state.png" alt="state">-->
                         <mat-icon class="text-green-600">check</mat-icon>
                         <p>Estado</p>
                         <p>{{ delv.state }}</p>

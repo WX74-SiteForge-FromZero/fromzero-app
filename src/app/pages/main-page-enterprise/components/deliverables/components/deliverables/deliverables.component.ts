@@ -13,9 +13,6 @@ import {IDeliverable} from "../../model/ideliverable";
 })
 export class DeliverablesComponent implements OnInit {
 
-  enterprise?:any;
-  projectname?:string;
-
   deliverables!:IDeliverable[];
 
   deliverableCreated?:any;
@@ -33,15 +30,10 @@ export class DeliverablesComponent implements OnInit {
   ngOnInit() {
 
     this.route.params.subscribe(params => {
-      //Leyendo el projectId que se envió por params
       this.projectId = +params['projectId'];
 
       this.delvsApi.getAllDeliverablesByProjectId(this.projectId).subscribe(deliverables=>{
         this.deliverables=deliverables;
-        if (deliverables.length > 0){
-          this.projectname=deliverables[0]?.project?.name;
-          this.enterprise=deliverables[0]?.project?.company?.companyName;
-        }
       })
     })
   }
@@ -57,20 +49,24 @@ export class DeliverablesComponent implements OnInit {
       }
     })
     dialogRef.afterClosed().subscribe(result=>{
-      console.log(result);
 
-      this.deliverableCreated={
-        id:count,
-        name:result.delv_name.value,
-        description:result.delv_description.value,
-        date:result.delv_exp_date.value,
-        projectId:this.projectId
+      if (result !== undefined) {
+
+        if (result.delv_name.value && result.delv_description.value && result.delv_exp_date.value) {
+
+          this.deliverableCreated = {
+            id: count,
+            name: result.delv_name.value,
+            description: result.delv_description.value,
+            date: result.delv_exp_date.value,
+            projectId: this.projectId
+          }
+
+          this.delvsApi.postDeliverable(this.deliverableCreated).subscribe(response=>{
+            console.log(response)
+          })
+        }else console.error("Datos no validos")
       }
-
-      //Llamar al servicio para hacer POST
-      this.delvsApi.postDeliverable(this.deliverableCreated).subscribe(response=>{
-        console.log(response)
-      })
 
     })
   }

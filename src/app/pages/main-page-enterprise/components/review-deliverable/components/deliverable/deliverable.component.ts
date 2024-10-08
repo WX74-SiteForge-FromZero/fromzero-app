@@ -12,8 +12,6 @@ import {IDeliverable} from "../../../deliverables/model/ideliverable";
 })
 export class DeliverableComponent implements OnInit{
   deliverableId?: number;
-  projectName?:string;
-  enterpriseName?:string;
   deliverable!:IDeliverable;
 
   constructor(public dialog: MatDialog,private route: ActivatedRoute,private delvsApi:DeliverablesApiService) { }
@@ -23,8 +21,6 @@ export class DeliverableComponent implements OnInit{
       this.deliverableId= +params['deliverableId'];
       this.delvsApi.getDeliverableById(this.deliverableId).subscribe(deliverable=>{
         this.deliverable=deliverable;
-        this.projectName=this.deliverable?.project?.name;
-        this.enterpriseName=this.deliverable?.project?.company?.companyName;
       })
     })
   }
