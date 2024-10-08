@@ -17,16 +17,12 @@ export class FormCreateProjectComponent implements OnInit{
     {id:3,name:"HTML"},
     {id:4,name:"CSS"},
   ]
-  selectedProgrammingLanguages:number[]=[];
-
-
 
   frameworksList=[
     {id:1,name:"Vue_Js"},
     {id:2,name:"Angular"},
     {id:3,name:"React"},
   ]
-  selectedFrameworks:number[]=[];
 
   // -----------
 
@@ -41,34 +37,18 @@ export class FormCreateProjectComponent implements OnInit{
   hideMethodologies = new FormControl(true);
 
   selectedLanguages:string[] = [];
-  selectedFrameworksTemp:string[] = [];
+  selectedFrameworks:string[] = [];
 
-  selectedFiles: File[] = [];
   removeSelectedLanguage(index:number, list: string[]){
     list.splice(index, 1);
-    //this.selectedProgrammingLanguages.splice(index,1);
-
     this.selectedProgrammingLanguagesAux.splice(index,1);
-
-    //console.log(this.selectedProgrammingLanguages)
   }
 
   removeSelectedFramework(index:number, list: string[]){
     list.splice(index,1);
-    //this.selectedFrameworks.splice(index,1);
-
     this.selectedFrameworksAux.splice(index,1);
-
-    //console.log(this.selectedFrameworks)
   }
 
-  onFilesSelected(event: Event) {
-    const target = event.target as HTMLInputElement;
-    if (target && target.files && target.files.length > 0) {
-      this.selectedFiles = Array.from(target.files);
-      console.log(this.selectedFiles);
-    }
-  }
   constructor(private fb: FormBuilder, public dialog: MatDialog,private projectsService:ProjectsApiService) {
     this.userId = Number(localStorage.getItem('id'));
     this.form = this.fb.group({
@@ -108,7 +88,7 @@ export class FormCreateProjectComponent implements OnInit{
 
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
-          // Aquí va el código para publicar el proyecto
+
           let project ={
             name: this.form.get('title')?.value,
             description: this.form.get('description')?.value,
@@ -137,20 +117,16 @@ export class FormCreateProjectComponent implements OnInit{
     return this.form.get('frameworks') as FormArray;
   }
 
-  addingLanguages(languageId:number,languageName:string){
-    //this.selectedProgrammingLanguages.push(languageId)
+  addingLanguages(languageName:string){
     this.selectedProgrammingLanguagesAux.push(languageName);
     const numberControl = this.fb.control(languageName)
     this.languages.push(numberControl);
-    //console.log(this.selectedProgrammingLanguages)
   }
 
-  addingFrameworks(frameworkId:number,frameworkName:string){
-    //this.selectedFrameworks.push(frameworkId);
+  addingFrameworks(frameworkName:string){
     this.selectedFrameworksAux.push(frameworkName);
     const numberControl = this.fb.control(frameworkName)
     this.frameworks.push(numberControl);
-    //console.log(this.selectedFrameworks)
   }
 
 }
