@@ -1,57 +1,31 @@
-.title{
-  margin-top: 50px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.title h1{
-  margin-bottom: 0;
-}
-
 input{
-  display: block;
   width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
   border-radius: 20px;
-  padding: 8px 20px;
+  padding: 10px;
 }
 
 .buttons {
+  margin-top: 20px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .buttons button {
   margin: 0 10px;
+  background-color: white;
 }
 
 .project-list{
-  width: 70%;
-  min-width: 600px;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 15px;
+  width: 800px;
+  height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-right: 10px;
 }
 
-.project-card{
-  margin-bottom: 20px;
+@media screen and (max-width: 400px) {
+  input{
+    width: 100%;
+  }
 }
-
-.project-content{
-  display: flex;
-}
-.project-content div p{
-  margin: 0;
-  white-space: pre-line;
-}
-.project-content img{
-  max-height: 200px;
-  margin-left: 100px;
-}
-
-.stars{
-  color: orange;
-}
-

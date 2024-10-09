@@ -1,12 +1,9 @@
-<div class="w-4/5 h-full mt-10">
-  <div class="h-3/4 overflow-x-hidden overflow-y-auto">
-    <div class="title">
-      <h1>Proyectos Destacados</h1>
-      <h3>Explora mas de 100 proyectos realizados</h3>
+<div class="w-full h-full">
+  <div class="mx-5">
+    <h1 style="text-align: center;margin: 0">Proyectos Destacados</h1>
+    <div class="flex justify-center">
+      <input placeholder="Busqueda de proyectos">
     </div>
-
-    <input placeholder="Busqueda de proyectos">
-
 
     <div class="buttons">
       <button mat-stroked-button class="b-web-app"
@@ -35,32 +32,34 @@
       </button>
     </div>
 
-    <ul class="project-list">
-      <mat-card class="project-card" *ngFor="let project of filteredProjects">
-        <mat-card-header style="display: block">
-          <mat-card-title>
-            <h1 style="text-align: center">{{ project.name }}</h1>
-          </mat-card-title>
-          <mat-card-subtitle style="text-align: right">
-            por <strong> {{project.company.companyName}}</strong><br>
-            y <strong>{{project.developer.firstName}} {{project.developer.lastName}}</strong>
-          </mat-card-subtitle>
-        </mat-card-header>
+    <div style="display: flex; justify-content: center; margin-top: 20px">
+      <ul class="project-list">
+        @for (project of filteredProjects; track $index) {
+          <mat-card>
+            <mat-card-header style="display: block">
+              <mat-card-title>
+                <h1 style="text-align: center">{{ project.name }}</h1>
+              </mat-card-title>
+              <mat-card-subtitle>
+                <div class="flex flex-row gap-3 justify-end items-center">
+                  <p style="margin: 0">por <strong> {{ project.company.companyName }}</strong></p>
+                  <img mat-card-image [src]="project.company.profileImgUrl" alt="Perfil" class="w-9 h-9">
+                </div>
+                <div class="flex flex-row gap-3 justify-end items-center">
+                  <p style="margin: 0">y <strong>{{ project.developer.firstName }} {{ project.developer.lastName }}</strong></p>
+                  <img mat-card-image [src]="project.developer.profileImgUrl" alt="Perfil" class="w-9 h-9">
+                </div>
+              </mat-card-subtitle>
+            </mat-card-header>
 
-        <mat-card-content class="project-content">
-          <div class="left-content">
-            <mat-card-subtitle class="description-title">
-              <h2>Descripcion</h2>
-            </mat-card-subtitle>
-            <p>{{ project.description }}</p>
-
-
-          </div>
-
-        </mat-card-content>
-      </mat-card>
-    </ul>
-
+            <mat-card-content class="project-content">
+              <h2 style="white-space: pre-line">Descripcion</h2>
+              <p>{{ project.description }}</p>
+            </mat-card-content>
+          </mat-card>
+        }
+      </ul>
+    </div>
 
   </div>
 </div>

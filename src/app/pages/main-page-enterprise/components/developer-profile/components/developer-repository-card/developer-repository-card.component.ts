@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {IDeveloperProject} from "../../model/ideveloper-project";
+import {IProject} from "../../../home/models/iproject";
 
 @Component({
   selector: 'app-developer-repository-card',
@@ -7,7 +7,6 @@ import {IDeveloperProject} from "../../model/ideveloper-project";
   styleUrl: './developer-repository-card.component.css'
 })
 export class DeveloperRepositoryCardComponent {
-  emptyProjects = new Array(5);
-  @Input() perfilDeveloperRepository!: IDeveloperProject[];
+  @Input() perfilDeveloperRepository!: IProject[]
 
 }

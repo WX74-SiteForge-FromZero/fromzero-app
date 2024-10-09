@@ -1,21 +1,5 @@
-.look {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.pages {
-  max-width: 1000px;
-  margin: 0 auto;
-  margin-top: 20px;
-}
-
-.bloque-superior {
-  margin: 20px;
-}
-
 .developers-list {
-  height: 65vh;
+  height: 600px;
   overflow-x: hidden;
   overflow-y: auto;
-  margin-right: 30px;
 }

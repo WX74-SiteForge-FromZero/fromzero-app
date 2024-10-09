@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {IDeveloperProfileTemp} from "../../../../../../core/models/ideveloper-profile";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-developer-profile-card',
@@ -9,5 +10,9 @@ import {IDeveloperProfileTemp} from "../../../../../../core/models/ideveloper-pr
 export class DeveloperProfileCardComponent {
   @Input() perfilDeveloper!: IDeveloperProfileTemp ;
 
-  constructor() {}
+  constructor(private router:Router) {}
+
+  goToMessage(){
+    this.router.navigate(["/app/main/shared/message"])
+  }
 }
