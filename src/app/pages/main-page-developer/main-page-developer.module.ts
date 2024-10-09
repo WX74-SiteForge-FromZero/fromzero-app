@@ -33,8 +33,6 @@ import { SendDeliverableComponent } from './components/send-deliverable/send-del
 import { MainPageDeveloperComponent } from './pages/main-page-developer/main-page-developer.component';
 import { HomePageDeveloperComponent } from './components/home/components/home-page-developer/home-page-developer.component';
 
-
-
 @NgModule({
   declarations: [
     SidenavDeveloperComponent,

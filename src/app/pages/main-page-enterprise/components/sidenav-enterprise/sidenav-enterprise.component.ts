@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProfileService} from "../../../../core/services/profiles/profile.service";
 
 @Component({
@@ -6,7 +6,7 @@ import {ProfileService} from "../../../../core/services/profiles/profile.service
   templateUrl: './sidenav-enterprise.component.html',
   styleUrl: './sidenav-enterprise.component.css'
 })
-export class SidenavEnterpriseComponent {
+export class SidenavEnterpriseComponent implements OnInit{
 
   user:any;
   expand=false;

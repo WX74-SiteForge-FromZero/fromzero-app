@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { MainPageComponent } from "./pages/main-page/main-page.component";
 import {HomeProfileComponent} from "./components/home/components/home-profile/home-profile.component";
 import {HomeProjectsComponent} from "./components/home/components/home-projects/home-projects.component";
@@ -47,8 +47,6 @@ import { DeveloperRepositoryCardComponent } from './components/developer-profile
 import { DeveloperProfilePageComponent } from './components/developer-profile/components/developer-profile-page/developer-profile-page.component';
 import {SharedModule} from "../../shared/shared.module";
 
-
-
 @NgModule({
   declarations: [
     HomeProfileComponent,
@@ -69,27 +67,28 @@ import {SharedModule} from "../../shared/shared.module";
     DeveloperRepositoryCardComponent,
     DeveloperProfilePageComponent,
   ],
-  imports: [
-    CommonModule,
-    AppContentRoutingModule,
-    MatCardModule,
-    MatIconModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-    MatProgressBarModule,
-    MatSelect,
-    MatOption,
-    MatCheckbox,
-    ReactiveFormsModule,
-    MatDatepickerInput,
-    MatDatepickerToggle,
-    MatDatepicker,
-    MatPaginatorModule,
-    HttpClientModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        AppContentRoutingModule,
+        MatCardModule,
+        MatIconModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        MatButtonModule,
+        MatProgressBarModule,
+        MatSelect,
+        MatOption,
+        MatCheckbox,
+        ReactiveFormsModule,
+        MatDatepickerInput,
+        MatDatepickerToggle,
+        MatDatepicker,
+        MatPaginatorModule,
+        HttpClientModule,
+        SharedModule,
+        NgOptimizedImage
+    ]
 })
 export class MainPageEnterpriseModule { }
