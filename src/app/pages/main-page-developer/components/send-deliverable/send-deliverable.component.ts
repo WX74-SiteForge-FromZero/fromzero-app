@@ -35,10 +35,6 @@ export class SendDeliverableComponent implements OnInit {
     }else{
       let deliverableId=Number(this.deliverableId)
       let message = this.developerMessage.value??'';
-      /*this.delvsApi.sendDeliverable(deliverableId,message).subscribe(response=>{
-        console.log(response)
-        this.sent=1
-      })*/
       this.delvsApi.sendDeliverable(deliverableId,message).subscribe({
         next:(response)=> {
           this.sent=1

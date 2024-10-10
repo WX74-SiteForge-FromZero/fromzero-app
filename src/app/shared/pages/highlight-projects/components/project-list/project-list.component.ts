@@ -12,9 +12,15 @@ import {IProject} from "../../../../../pages/main-page-enterprise/components/hom
 export class ProjectListComponent implements OnInit{
   projects!: IProject[];
   filteredProjects: IProject[]=[];
+  companyNameFilter:string=""
 
   constructor(
     private _projectService: ProjectsApiService) {
+  }
+
+  filterByCompany(companyName: string) {
+    if (companyName==="")return
+    this.filteredProjects = this.projects.filter(project => project.company.companyName===companyName);
   }
 
   filterProjects(type: string) {
