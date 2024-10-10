@@ -1,37 +1,4 @@
-.mat-mdc-card-header{
-  justify-content: center;
-  margin-left: 7%;
-  width: 85%;
-  gap: 5vh;
-  align-items: center;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  flex-direction: row;
-}
-.project-card {
-  max-height: 90vh;
-  overflow-y: auto;
-}
-.mat-mdc-card.mdc-card.project-card{
-  height: 100%;
-}
-.mat-mdc-progress-bar.mdc-linear-progress.mat-primary.mdc-linear-progress--animation-ready{
-  width: 70%;
-}
-.vertical-center{
-  align-items: center;
-}
-.mat-mdc-card-content{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-}
-.mat-mdc-card.mdc-card.gray-card {
-  background-color: #ccc;
-  width: 100%;
-}
-.projects-container{
+.developer-projects-container{
   height: 500px;
   overflow-x: hidden;
   overflow-y: auto;

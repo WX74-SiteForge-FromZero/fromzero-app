@@ -1,7 +1,11 @@
-app-home-projects, app-home-profile {
-  flex: 1 0 0;
+app-home-projects-developer, app-home-profile-developer {
+  margin: 0 20px;
 }
 
-.flex {
-  align-items: stretch;
+app-home-profile-developer{
+  width: 60%;
+}
+
+app-home-projects-developer{
+  width: 80%;
 }
