@@ -13,6 +13,7 @@ import {IDeliverable} from "../../../deliverables/model/ideliverable";
 export class DeliverableComponent implements OnInit{
   deliverableId?: number;
   deliverable!:IDeliverable;
+  accepted:string="";
 
   constructor(public dialog: MatDialog,private route: ActivatedRoute,private delvsApi:DeliverablesApiService) { }
 
@@ -26,10 +27,16 @@ export class DeliverableComponent implements OnInit{
   }
 
   openDialog() {
-    this.dialog.open(DialogAcceptDeliverableComponent,{
+    const dialogRef = this.dialog.open(DialogAcceptDeliverableComponent,{
       data:{
         deliverableId:Number(this.deliverableId)
       }
     });
+
+    dialogRef.afterClosed().subscribe(result=>{
+      console.log(result)
+      this.accepted=result
+    })
+
   }
 }

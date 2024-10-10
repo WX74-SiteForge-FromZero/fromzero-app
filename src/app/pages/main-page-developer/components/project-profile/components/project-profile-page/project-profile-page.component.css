@@ -1,7 +1,7 @@
-app-developer-profile-card, app-developer-repository-card {
-  flex: 1 0 0;
+app-project-profile-card {
+  margin: 0 20px;
 }
 
-.flex {
-  align-items: stretch;
+app-project-profile-card {
+  width: 80%;
 }

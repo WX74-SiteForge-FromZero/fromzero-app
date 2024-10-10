@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {AuthApiService} from "../../../../../auth/services/auth-api.service";
 import {ICompanyProfile} from "../../../../../../core/models/icompany-profile";
 import {ProfileService} from "../../../../../../core/services/profiles/profile.service";
 
@@ -9,21 +8,20 @@ import {ProfileService} from "../../../../../../core/services/profiles/profile.s
   templateUrl: './project-profile-page.component.html',
   styleUrl: './project-profile-page.component.css'
 })
-export class ProjectProfilePageComponent implements OnInit{
+export class ProjectProfilePageComponent implements OnInit {
   enterpriseProfile!: ICompanyProfile;
 
   constructor(
     private route: ActivatedRoute,
-    private _authapiservice: AuthApiService,
-    private _profileService:ProfileService) {
+    private _profileService: ProfileService) {
   }
 
   ngOnInit(): void {
-    let enterpriseId:number
-    this.route.params.subscribe(params=>{
-      enterpriseId= +params['enterpriseId'];
-      this._profileService.getEnterpriseProfileById(enterpriseId).subscribe(enterprise=>{
-        this.enterpriseProfile=enterprise;
+    let enterpriseId: number
+    this.route.params.subscribe(params => {
+      enterpriseId = +params['enterpriseId'];
+      this._profileService.getEnterpriseProfileById(enterpriseId).subscribe(enterprise => {
+        this.enterpriseProfile = enterprise;
       })
     })
   }

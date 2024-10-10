@@ -26,7 +26,7 @@ import { ApplyConfirmationComponent } from './components/projects/apply-confirma
 import {SharedModule} from "../../shared/shared.module";
 import { ProjectProfileCardComponent } from './components/project-profile/components/project-profile-card/project-profile-card.component';
 import { ProjectProfilePageComponent } from './components/project-profile/components/project-profile-page/project-profile-page.component';
-import { ProjectRepositoryCardComponent } from './components/project-profile/components/project-repository-card/project-repository-card.component';
+//import { ProjectRepositoryCardComponent } from './components/project-profile/components/project-repository-card/project-repository-card.component';
 import { DevDeliverablesComponent } from './components/dev-deliverables/dev-deliverables.component';
 import { SendDeliverableComponent } from './components/send-deliverable/send-deliverable.component';
 import { MainPageDeveloperComponent } from './pages/main-page-developer/main-page-developer.component';
@@ -44,7 +44,7 @@ import {MatDivider} from "@angular/material/divider";
     ApplyConfirmationComponent,
     ProjectProfileCardComponent,
     ProjectProfilePageComponent,
-    ProjectRepositoryCardComponent,
+    //ProjectRepositoryCardComponent,
     DevDeliverablesComponent,
     SendDeliverableComponent,
     MainPageDeveloperComponent,

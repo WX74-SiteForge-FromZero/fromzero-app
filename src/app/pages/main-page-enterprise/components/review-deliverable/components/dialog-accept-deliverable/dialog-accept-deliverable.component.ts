@@ -14,16 +14,14 @@ export class DialogAcceptDeliverableComponent {
   }
 
   acceptDeliverable(){
-    this.delvsApi.reviewDeliverable(this.data.deliverableId,true).subscribe(response=>{
-      console.log(response)
-      this.dialogRef.close();
+    this.delvsApi.reviewDeliverable(this.data.deliverableId,true).subscribe((response:any)=>{
+      this.dialogRef.close(response.state);
     })
   }
 
   rejectDeliverable(){
-    this.delvsApi.reviewDeliverable(this.data.deliverableId,false).subscribe(response=>{
-      console.log(response)
-      this.dialogRef.close();
+    this.delvsApi.reviewDeliverable(this.data.deliverableId,false).subscribe((response:any)=>{
+      this.dialogRef.close(response.state);
     })
 
   }

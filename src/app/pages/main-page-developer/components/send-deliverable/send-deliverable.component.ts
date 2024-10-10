@@ -13,10 +13,9 @@ import {FormControl, Validators} from "@angular/forms";
 })
 export class SendDeliverableComponent implements OnInit {
   deliverable!:IDeliverable;
-  projectName?:string;
-  enterpriseName?:string;
   developerMessage=new FormControl("",[Validators.required]);
   deliverableId?: number;
+  sent=0;
 
   constructor(private route: ActivatedRoute,private delvsApi:DeliverablesApiService) {
   }
@@ -31,13 +30,22 @@ export class SendDeliverableComponent implements OnInit {
   }
 
   submitDeliverable(){
-    if (!(this.developerMessage.valid || this.developerMessage.pristine)){
+    if (this.developerMessage.invalid){
       console.log("Input no valido")
     }else{
       let deliverableId=Number(this.deliverableId)
       let message = this.developerMessage.value??'';
-      this.delvsApi.sendDeliverable(deliverableId,message).subscribe(response=>{
+      /*this.delvsApi.sendDeliverable(deliverableId,message).subscribe(response=>{
         console.log(response)
+        this.sent=1
+      })*/
+      this.delvsApi.sendDeliverable(deliverableId,message).subscribe({
+        next:(response)=> {
+          this.sent=1
+        },
+        error:(response)=> {
+          this.sent=2
+        }
       })
     }
   }

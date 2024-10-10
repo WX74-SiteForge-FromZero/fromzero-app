@@ -1,24 +1,44 @@
-<div style="margin-right: 40px; height: 100%; display: flex; flex-direction: column;">
-  <div style="text-align: center; padding: 20px">
-    <h1 style="font-size: xx-large">{{ projectName }}</h1>
-    <h3>{{ enterpriseName }}</h3>
-  </div>
-  <mat-card style="margin: auto">
-    <mat-card-header>
-      <mat-card-title>{{deliverable?.name}}</mat-card-title>
-      <mat-card-subtitle>{{deliverable?.description}}</mat-card-subtitle>
-      <mat-card-title>Estado: {{deliverable?.state}}</mat-card-title>
+<div class="h-full flex justify-center">
+  <mat-card
+    style="margin: 0 20px;height: 500px;width:900px;display: flex;flex-direction: column;justify-content: center">
+    <mat-card-header style="display:block;">
+      <mat-card-title style="text-align: center">{{ deliverable?.name }}</mat-card-title>
+      <mat-card-subtitle style="white-space: pre-line">{{ deliverable?.description }}</mat-card-subtitle>
+      <mat-card-title>Estado: {{ deliverable?.state }}</mat-card-title>
+      @if (deliverable?.state === "RECHAZADO") {
+        <mat-card-subtitle style="color: red"><strong>Su entrega anterior fue rechazada</strong></mat-card-subtitle>
+      }
     </mat-card-header>
 
     <mat-card-content style="display: flex; flex-direction: column">
-      <h3>Agregar mensaje</h3>
-      <mat-form-field>
-        <textarea matInput [formControl]="developerMessage"></textarea>
-      </mat-form-field>
-      <div style="text-align: center">
-        <button mat-flat-button color="primary" class="rounded-full" (click)="submitDeliverable()">
+      <div class="send-deliverable-content">
+        <h3>Agregar mensaje</h3>
+        <div class="flex justify-center">
+          <mat-form-field style="width: 90%">
+            <textarea matInput [formControl]="developerMessage" style="resize: none; height: 200px"></textarea>
+          </mat-form-field>
+        </div>
+        <!--Aqui va componente para subir archivos o imagenes-->
+        <!--<div>
+          <h3>Adjuntar archivos o imagenes</h3>
+        </div>-->
+      </div>
+      <div style="display: flex;flex-direction: column;justify-content: center">
+        <div style="text-align: center">
+        <button mat-stroked-button [disabled]="deliverable?.state==='COMPLETADO'"
+                (click)="submitDeliverable()">
           Enviar entregable a revisión
         </button>
+        </div>
+        <div style="display: flex; flex-direction: row; justify-content: center">
+        @if (sent===1){
+          <p class="text-green-500 text-xl">Enviado</p>
+          <mat-icon class="text-green-500">check_circle_outline</mat-icon>
+        } @else if (sent===2){
+          <p class="text-red-500 text-xl">Error al enviar</p>
+          <mat-icon class="text-red-500">cancel</mat-icon>
+        }
+        </div>
       </div>
     </mat-card-content>
   </mat-card>
