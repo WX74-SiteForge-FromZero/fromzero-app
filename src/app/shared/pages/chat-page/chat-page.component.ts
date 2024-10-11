@@ -15,6 +15,10 @@ export class ChatPageComponent implements OnInit {
   messages: IMessage[] = [];
   accountType = ""
   selectedChat = 0
+
+  currentContactName=""
+  currentContactImage=""
+
   userRecordId = ""
 
   constructor(
@@ -43,6 +47,26 @@ export class ChatPageComponent implements OnInit {
     this._messageService.getMessagesByChatId(chatId).subscribe(response => {
       this.messages = response
     })
+  }
+
+  getChatsContainerStyleClass(){
+
+    if (this.selectedChat!==0) {
+
+      if (this.chats.length >= 0 && this.chats.length <= 5) {
+        return 'chats-container-sm'
+      }
+      return 'chats-container'
+    }
+    if (this.chats.length >= 0 && this.chats.length <= 5) {
+      return 'no-chat-opened-chats-container-sm'
+    }
+    return 'no-chat-opened-chats-container'
+  }
+
+  handle(contact:any){
+    this.currentContactName = contact.contactName;
+    this.currentContactImage = contact.contactImage;
   }
 
 }

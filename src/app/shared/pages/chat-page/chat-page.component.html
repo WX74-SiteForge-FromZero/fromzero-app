@@ -1,13 +1,26 @@
 <div class="chat-page-container">
-  <div class="chats-container">
-    @for (chat of chats; track $index) {
-      <app-chat [chat]="chat" [currentUser]="accountType" (openChat)="openChat($event)"/>
+  <div [ngClass]="getChatsContainerStyleClass()">
+    @if (chats.length !== 0) {
+      @for (chat of chats; track $index) {
+        <app-chat [chat]="chat" [currentUser]="accountType" (openChat)="openChat($event)"
+                  (currentContact)="handle($event)"/>
+      }
+    } @else {
+      <div>
+        <h2 style="margin: 0"><i>Aún no tienes contactos</i></h2>
+      </div>
     }
   </div>
   @if (selectedChat !== 0) {
     <div class="current-chat">
+      <div class="flex flex-row justify-around p-2.5 flex-wrap">
+        <h2 style="margin: 0">{{ currentContactName }}</h2>
+        <div>
+          <img mat-card-image [src]="currentContactImage" alt="contact-image" class="w-9 h-auto">
+        </div>
+      </div>
       @if (messages.length !== 0) {
-        <ul style="height: 80%;overflow-y: auto;overflow-x: hidden">
+        <ul style="height: 100%;overflow-y: auto;overflow-x: hidden">
           @for (message of messages; track $index) {
             <li style="padding: 10px">
               <app-message [userRecordId]="userRecordId" [message]="message"/>

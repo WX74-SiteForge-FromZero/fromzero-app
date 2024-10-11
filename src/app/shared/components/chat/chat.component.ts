@@ -11,6 +11,7 @@ export class ChatComponent implements OnInit {
   @Input() chat!:IChat
   @Input() currentUser!:string
   @Output() openChat = new EventEmitter<number>()
+  @Output() currentContact = new EventEmitter()
 
   constructor() {
   }
@@ -21,6 +22,17 @@ export class ChatComponent implements OnInit {
 
   selectedChat(chatId:number){
     this.openChat.emit(chatId);
+    if (this.currentUser==='E'){
+      this.currentContact.emit({
+        contactName:this.chat.developer.firstName+" "+this.chat.developer.lastName,
+        contactImage:this.chat.developer.profileImgUrl
+      })
+    }else if (this.currentUser==='D'){
+      this.currentContact.emit({
+        contactName:this.chat.company.companyName,
+        contactImage:this.chat.company.profileImgUrl
+      })
+    }
   }
 
 }
