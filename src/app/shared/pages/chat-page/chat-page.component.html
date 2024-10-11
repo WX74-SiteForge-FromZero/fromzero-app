@@ -1,0 +1,36 @@
+<div class="chat-page-container">
+  <div class="chats-container">
+    @for (chat of chats; track $index) {
+      <app-chat [chat]="chat" [currentUser]="accountType" (openChat)="openChat($event)"/>
+    }
+  </div>
+  @if (selectedChat !== 0) {
+    <div class="current-chat">
+      @if (messages.length !== 0) {
+        <ul style="height: 80%;overflow-y: auto;overflow-x: hidden">
+          @for (message of messages; track $index) {
+            <li style="padding: 10px">
+              <app-message [userRecordId]="userRecordId" [message]="message"/>
+            </li>
+          }
+        </ul>
+      } @else {
+        <div class="messages-empty">
+          <h2 style="margin: 0"><i>No hay mensajes</i></h2>
+        </div>
+      }
+      <div class="flex flex-row justify-around">
+        <div class="input-message-container">
+          <mat-form-field style="height: 100px;width: 100%">
+            <textarea matInput placeholder="Escribe un mensaje" style="resize: none;"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="send-message">
+          <button mat-flat-button color="primary">
+            <mat-icon style="color: white; margin: 0;width: 100%;">send</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

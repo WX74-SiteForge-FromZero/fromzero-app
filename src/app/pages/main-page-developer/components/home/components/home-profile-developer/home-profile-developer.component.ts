@@ -32,7 +32,7 @@ export class HomeProfileDeveloperComponent {
   }
 
   goToInbox(){
-    this.router.navigate(["/app-developer/main/shared/inbox"])
+    this.router.navigate(["/app-developer/main/shared/chats"])
   }
 
 }

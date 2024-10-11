@@ -29,7 +29,7 @@ export class HomeProfileComponent {
   }
 
   goToInbox(){
-    this.router.navigate(["/app/main/shared/inbox"])
+    this.router.navigate(["/app/main/shared/chats"])
   }
 
 }
