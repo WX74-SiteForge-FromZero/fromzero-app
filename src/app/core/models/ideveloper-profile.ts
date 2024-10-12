@@ -1,5 +1,6 @@
 export interface IDeveloperProfileTemp {
   id:number,
+  ProfileId:string,
   firstName:string,
   lastName:string,
   email:string,

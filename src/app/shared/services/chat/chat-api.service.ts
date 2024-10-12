@@ -12,8 +12,8 @@ export class ChatApiService extends BaseService{
     super()
     this.url = `${this.basePath}/chat`;
   }
-  createChat(developerRecordId:string,companyRecordId:string){
-    return this.http.post<IChat>(`${this.url}/chats/create`,{developerRecordId,companyRecordId})
+  createChat(developerId:string,companyId:string){
+    return this.http.post<IChat>(`${this.url}/chats/create`,{developerId,companyId})
   }
   getAllChatsByDeveloper(developerRecordId:string){
     return this.http.get<IChat[]>(`${this.url}/developer/${developerRecordId}`)
