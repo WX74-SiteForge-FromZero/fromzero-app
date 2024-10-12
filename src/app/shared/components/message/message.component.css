@@ -1,35 +1,14 @@
-.mat-sm> .mat-mdc-text-field-wrapper.mat-mdc-form-field-flex{
-  height: 35px!important;
-}
-.mat-sm> .mat-mdc-text-field-wrapper.mdc-text-field--outlined.mat-mdc-form-field-infix  {
-  padding-top: 8px!important;
-}
-.mat-sm>  .mat-mdc-text-field-wrapper.mat-mdc-form-field-flex.mat-mdc-floating-label{
-  top: 17px;
-}
-.mat-sm>  .mat-mdc-text-field-wrapper.mat-mdc-form-field-flex.mdc-floating-label--float-above{
-  top: 28px;
+.message-content {
+  background-color: lightblue;
+  padding: 8px;
+  border-radius: 10px;
+  margin: 0;
+  max-width: 60%;
+  white-space: pre-line;
 }
 
-
-
-.custom-file-upload {
-  border: 1px solid #ccc;
-  display: inline-block;
-  padding: 6px 12px;
-  cursor: pointer;
-  background-color: #f0f0f0;
-  color: #333;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.custom-file-upload:hover {
-  background-color: #e0e0e0;
-}
-
-/* Estilos para el icono del botón */
-.material-icons {
-  vertical-align: middle;
-  margin-right: 5px;
+@media screen and (max-width: 400px) {
+  .message-content {
+    max-width: 90%;
+  }
 }

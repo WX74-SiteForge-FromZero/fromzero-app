@@ -24,6 +24,7 @@ export class ProjectListComponent implements OnInit{
   }
 
   filterProjects(type: string) {
+    this.companyNameFilter=""
     if (type === "Borrar Filtros") {
       this.filteredProjects = this.projects;
       return;
