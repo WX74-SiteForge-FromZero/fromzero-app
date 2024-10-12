@@ -16,10 +16,12 @@ export class ChatPageComponent implements OnInit {
   accountType = ""
   selectedChat = 0
 
-  currentContactName=""
-  currentContactImage=""
+  currentContactName = ""
+  currentContactImage = ""
 
   userRecordId = ""
+
+  messageContent = ""
 
   constructor(
     private _messageService: MessagesApiService,
@@ -49,9 +51,9 @@ export class ChatPageComponent implements OnInit {
     })
   }
 
-  getChatsContainerStyleClass(){
+  getChatsContainerStyleClass() {
 
-    if (this.selectedChat!==0) {
+    if (this.selectedChat !== 0) {
 
       if (this.chats.length >= 0 && this.chats.length <= 5) {
         return 'chats-container-sm'
@@ -64,9 +66,31 @@ export class ChatPageComponent implements OnInit {
     return 'no-chat-opened-chats-container'
   }
 
-  handle(contact:any){
+  handle(contact: any) {
     this.currentContactName = contact.contactName;
     this.currentContactImage = contact.contactImage;
+  }
+
+  sendMessage(content: string) {
+    if (content===""){
+      console.error("Ingrese un mensaje")
+      return
+    }
+    let newMessage: any = {
+      chatId: this.selectedChat,
+      senderId: this.userRecordId,
+      content: this.messageContent
+    }
+    this._messageService.postMessage(this.selectedChat,this.userRecordId,this.messageContent).subscribe({
+      next: (result) => {
+        this.messages.push(newMessage)
+        this.messageContent = ""
+      },
+      error: (err) => {
+        console.error("No se pudo enviar el mensaje")
+      }
+    })
+
   }
 
 }
