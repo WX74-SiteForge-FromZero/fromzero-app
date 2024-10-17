@@ -20,13 +20,16 @@ export class CandidatesProjectDialogComponent {
   }
 
   acceptCandidate(developerId:number){
-    this.projectsService.assignDeveloperToProject(this.data.projectId,developerId).subscribe(response=>{
+    this.projectsService.assignDeveloperToProject(this.data.projectId,developerId,true).subscribe(response=>{
       console.log(response)
       this.dialogRef.close();
     })
   }
 
   rejectCandidate(candidate:ICandidate){
+    this.projectsService.assignDeveloperToProject(this.data.projectId,candidate.id,false).subscribe(response=>{
+      console.log(response)
+    })
     this.candidatesList.splice(this.candidatesList.indexOf(candidate),1);
   }
 

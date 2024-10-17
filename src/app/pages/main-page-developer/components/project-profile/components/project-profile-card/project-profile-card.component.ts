@@ -24,7 +24,11 @@ export class ProjectProfileCardComponent {
       },
       error: (err) => {
         // ya existe
-        console.log("error o ya existe")
+        /*console.log("error o ya existe")
+        console.log(err) // obejto del error
+        console.log(err.status) estatus del error
+        console.log(err.error.message) // mensaje personalizado
+        */
         this.router.navigate(["/app-developer/main/shared/chats"])
       }
     })

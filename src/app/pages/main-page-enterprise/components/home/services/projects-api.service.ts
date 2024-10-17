@@ -21,8 +21,8 @@ export class ProjectsApiService extends BaseService{
   postProject(project:any){
     return this.http.post<IProject>(`${this.url}`,project)
   }
-  assignDeveloperToProject(projectId:number,developerUserId:number){
-    return this.http.patch(`${this.url}/${projectId}/assign-developer`,developerUserId)
+  assignDeveloperToProject(projectId:number,developerUserId:number,accept:boolean){
+    return this.http.patch(`${this.url}/${projectId}/set-developer`,{developerId:developerUserId,accepted:accept})
   }
   getProjectsByState(state:string){
     let params = new HttpParams().set('state', state);
@@ -32,6 +32,6 @@ export class ProjectsApiService extends BaseService{
     return this.http.get<IProject>(`${this.url}/${id}`);
   }
   addCandidateToProject(projectId:number,developerUserId:number){
-    return this.http.patch(`${this.url}/${projectId}/add-candidate`,developerUserId)
+    return this.http.patch(`${this.url}/${projectId}/add-candidate`,{developerId:developerUserId})
   }
 }

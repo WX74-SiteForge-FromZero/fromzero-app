@@ -22,5 +22,5 @@ export interface IProject {
   frameworks:string[],
   type:string,
   budget:string,
-  methodologies:string
+  //methodologies:string
 }

@@ -4,6 +4,11 @@ import {MatDialog} from "@angular/material/dialog";
 import {ConfirmationDialogComponent} from "../confirmation-dialog/confirmation-dialog.component";
 import {ProjectsApiService} from "../../../home/services/projects-api.service";
 
+interface IMethodology{
+  name: string;
+  description:string
+}
+
 @Component({
   selector: 'app-form-create-project',
   templateUrl: './form-create-project.component.html',
@@ -24,6 +29,12 @@ export class FormCreateProjectComponent implements OnInit{
     {id:3,name:"React"},
   ]
 
+  projectCurrencyList=[
+    {id:1,name:"PEN"},
+    {id:2,name:"USD"}
+  ]
+
+  methodologiesList:IMethodology[]=[]
   // -----------
 
   selectedFrameworksAux:string[]=[]
@@ -33,7 +44,7 @@ export class FormCreateProjectComponent implements OnInit{
   // -----------
 
   form: FormGroup;
-  hideTechnologies = new FormControl(false);
+  //hideTechnologies = new FormControl(false);
   hideMethodologies = new FormControl(true);
 
   selectedLanguages:string[] = [];
@@ -58,19 +69,13 @@ export class FormCreateProjectComponent implements OnInit{
       languages:this.fb.array([]),
       frameworks:this.fb.array([]),
       presupuesto: ['', Validators.required],
-      procesos: [''],
+      currency: ['PEN', Validators.required],
+      methodologyName: [''],
+      methodologyDescription: [''],
     });
 
     this.hideMethodologies.valueChanges.subscribe((checked: boolean | null) => {
-      if (!checked) {
-        this.form.get('procesos')?.setValidators([Validators.required]);
-      }else{
-        this.form.get('procesos')?.clearValidators();
-        this.form.get('procesos')?.setValue('');
-      }
-
-      this.form.get('procesos')?.updateValueAndValidity();
-
+      this.methodologiesList=[]
     });
   }
   ngOnInit() {
@@ -97,7 +102,8 @@ export class FormCreateProjectComponent implements OnInit{
             frameworks:this.form.get('frameworks')?.value,
             type:this.form.get('projectType')?.value,
             budget:this.form.get('presupuesto')?.value,
-            methodologies:this.form.get('procesos')?.value,
+            currency:this.form.get('currency')?.value,
+            methodologies:this.methodologiesList
           }
           this.projectsService.postProject(project).subscribe(response=>{
             console.log(response)
@@ -129,4 +135,14 @@ export class FormCreateProjectComponent implements OnInit{
     this.frameworks.push(numberControl);
   }
 
+  addingMethodology(){
+    let methodology:IMethodology={
+      name:this.form.get('methodologyName')?.value,
+      description:this.form.get('methodologyDescription')?.value,
+    }
+
+    this.methodologiesList.push(methodology);
+    this.form.get('methodologyName')?.setValue('')
+    this.form.get('methodologyDescription')?.setValue('')
+  }
 }

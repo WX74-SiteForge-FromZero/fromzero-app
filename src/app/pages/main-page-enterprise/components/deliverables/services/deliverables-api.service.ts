@@ -28,10 +28,10 @@ export class DeliverablesApiService extends BaseService{
   }
 
   sendDeliverable(deliverableId:number,developerMessage:string){
-    return this.http.patch(`${this.url}/${deliverableId}/send`,developerMessage);
+    return this.http.patch(`${this.url}/${deliverableId}/send`,{developerMessage});
   }
 
   reviewDeliverable(deliverableId:number,accept:boolean){
-    return this.http.patch(`${this.url}/${deliverableId}/review`,accept)
+    return this.http.patch(`${this.url}/${deliverableId}/review`,{accepted:accept})
   }
 }
