@@ -1,10 +1,13 @@
 <div class="bg-white h-full flex flex-col justify-center">
 
   <div class="home-profile-header-content flex flex-row justify-around items-center">
-    <h1>{{ perfilUsuario?.firstName }} {{perfilUsuario?.lastName}}</h1>
+    <h1>{{ perfilUsuario?.firstName }} {{ perfilUsuario?.lastName }}</h1>
     <img mat-card-image [src]="perfilUsuario?.profileImgUrl" alt="Perfil de usuario" class="w-12 h-12">
-    <mat-icon (click)="openDialog()" class="text-purple-500 cursor-pointer hover:bg-gray-200">edit</mat-icon>
-    <mat-icon (click)="goToInbox()" class="text-purple-500 cursor-pointer hover:bg-gray-200">inbox</mat-icon>
+    <div class="flex flex-row flex-wrap justify-between w-1/5">
+      <mat-icon (click)="openDialog()" class="text-purple-500 cursor-pointer hover:bg-gray-200">edit</mat-icon>
+      <mat-icon (click)="goToInbox()" class="text-purple-500 cursor-pointer hover:bg-gray-200">inbox</mat-icon>
+      <mat-icon (click)="listPayments()" class="text-purple-500 cursor-pointer hover:bg-gray-200">payments</mat-icon>
+    </div>
   </div>
 
   <div class="flex justify-center">

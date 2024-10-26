@@ -5,6 +5,9 @@ import {MatDialog} from "@angular/material/dialog";
 import {DialogAddDeliverableComponent} from "../dialog/dialog-add-deliverable.component";
 import {FormControl} from "@angular/forms";
 import {IDeliverable} from "../../model/ideliverable";
+import {PayDeveloperComponent} from "../pay-developer/pay-developer.component";
+import {PaymentDetailsComponent} from "../payment-details/payment-details.component";
+import {PaymentService} from "../../../../../../core/services/payments/payment.service";
 
 @Component({
   selector: 'app-deliverables',
@@ -22,8 +25,12 @@ export class DeliverablesComponent implements OnInit {
   description=new FormControl('');
   exp_date=new FormControl(new Date());
 
+  isProjectCompleted = false;
+  isPaymentCompleted = false;
+
   constructor(private route: ActivatedRoute,
               private delvsApi: DeliverablesApiService,
+              private _paymentService:PaymentService,
               public dialog:MatDialog) {
   }
 
@@ -34,7 +41,23 @@ export class DeliverablesComponent implements OnInit {
 
       this.delvsApi.getAllDeliverablesByProjectId(this.projectId).subscribe(deliverables=>{
         this.deliverables=deliverables;
+        this.isProjectCompleted=this.deliverables.every(item=>item.state==="COMPLETADO")
+
       })
+
+      this._paymentService.getProjectPayment(this.projectId).subscribe({
+        next: response => {
+          if (response.status==="PENDIENTE"){
+            this.isPaymentCompleted=false;
+          }else if(response.status==="COMPLETADO"){
+            this.isPaymentCompleted=true;
+          }
+        },
+        error: err => {
+          console.error("ERROR")
+        }
+      })
+
     })
   }
 
@@ -74,4 +97,27 @@ export class DeliverablesComponent implements OnInit {
   goToReviewDelv(deliverableId:number){
     return ['/app','main',this.projectId,'deliverables',deliverableId]
   }
+
+  payDeveloper(){
+    const dialogRef=this.dialog.open(PayDeveloperComponent,{
+      data:{
+        projectId:this.projectId,
+      },
+      width:'500px',
+      disableClose:true,
+    })
+
+    dialogRef.afterClosed().subscribe(result=>{
+      this.isPaymentCompleted=result;
+    })
+  }
+
+  paymentDetails(){
+    const dialogRef=this.dialog.open(PaymentDetailsComponent,{
+      data:{
+        projectId:this.projectId,
+      }
+    })
+  }
+
 }

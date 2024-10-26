@@ -46,6 +46,8 @@ import { DeveloperProfileCardComponent } from './components/developer-profile/co
 import { DeveloperRepositoryCardComponent } from './components/developer-profile/components/developer-repository-card/developer-repository-card.component';
 import { DeveloperProfilePageComponent } from './components/developer-profile/components/developer-profile-page/developer-profile-page.component';
 import {SharedModule} from "../../shared/shared.module";
+import { PayDeveloperComponent } from './components/deliverables/components/pay-developer/pay-developer.component';
+import { PaymentDetailsComponent } from './components/deliverables/components/payment-details/payment-details.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import {SharedModule} from "../../shared/shared.module";
     DeveloperProfileCardComponent,
     DeveloperRepositoryCardComponent,
     DeveloperProfilePageComponent,
+    PayDeveloperComponent,
+    PaymentDetailsComponent,
   ],
     imports: [
         CommonModule,

@@ -1,6 +1,21 @@
 <div class="delvs-container">
+  @if (isProjectCompleted && !isPaymentCompleted){
+    <div class="pay-developer-content">
+      <h2>Todos los entregables han sido completado</h2>
+      <h3 (click)="payDeveloper()" class="hover:bg-gray-200 cursor-pointer"><i><u>
+        Ingresa aquí para pagar al desarrollador
+      </u></i></h3>
+    </div>
+  } @else if (isPaymentCompleted){
+    <div class="payment-done">
+      <h2>Pago realizado</h2>
+      <h3 (click)="paymentDetails()" class="hover:bg-gray-200 cursor-pointer"><i><u>
+        Ingrese aquí para ver boleta
+      </u></i></h3>
+    </div>
+  }
   <div class="delvs-title">
-    <h1>Cronograma de entregables</h1>
+    <h1 style="margin: 0">Cronograma de entregables</h1>
   </div>
   @if (deliverables?.length) {
     <div class="delvs-content">
@@ -61,7 +76,7 @@
   }
   <div class="delv-add">
     <button mat-icon-button aria-label="add deliverable"
-            (click)="openDialog()">
+            (click)="openDialog()" [disabled]="isProjectCompleted">
       <mat-icon>add</mat-icon>
     </button>
   </div>

@@ -32,6 +32,7 @@ import { SendDeliverableComponent } from './components/send-deliverable/send-del
 import { MainPageDeveloperComponent } from './pages/main-page-developer/main-page-developer.component';
 import { HomePageDeveloperComponent } from './components/home/components/home-page-developer/home-page-developer.component';
 import {MatDivider} from "@angular/material/divider";
+import { ListPaymentsDialogComponent } from './components/home/components/list-payments-dialog/list-payments-dialog.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {MatDivider} from "@angular/material/divider";
     SendDeliverableComponent,
     MainPageDeveloperComponent,
     HomePageDeveloperComponent,
+    ListPaymentsDialogComponent,
   ],
   imports: [
     CommonModule,
