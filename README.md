@@ -5,7 +5,8 @@ Aplicación para publicacion y seguimiento de un proyecto (publicado por una emp
 Desarrollado por la Start-up SiteForge usando elementos Angular para el frontend
 
 Equipo de trabajo:
-- Velasquez Pizarro, Jair
+- Ruiz Blas, Luciano Stefano
 - Quilla Luyo, Jorge Gerardo
 - Ticona Luque, Rony Piero
-- Carrasco Godos, Juan Fernando
+- Gamboa Delgado, Brayan Stiven
+- Aquije Quiroga, Luis Enrique
