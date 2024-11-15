@@ -15,13 +15,26 @@
         <h3>Agregar mensaje</h3>
         <div class="flex justify-center">
           <mat-form-field style="width: 90%">
-            <textarea matInput [formControl]="developerMessage" style="resize: none; height: 200px"></textarea>
+            <textarea matInput [formControl]="developerMessage" style="resize: none; height: 100px"></textarea>
           </mat-form-field>
         </div>
-        <!--Aqui va componente para subir archivos o imagenes-->
-        <!--<div>
+        <div>
           <h3>Adjuntar archivos o imagenes</h3>
-        </div>-->
+          <input type="file" (change)="onFileSelected($event)" multiple id="fileInput">
+          @if(files.length!==0){
+          <div class="files-to-send">
+          @for (file of files; track $index){
+            <div style="display:flex;flex-direction: row">
+            <h3>{{file.name}}</h3>
+            <mat-icon class="text-red-600 cursor-pointer"
+                 (click)="deleteFile($index)">
+              delete
+            </mat-icon>
+            </div>
+          }
+          </div>
+          }
+        </div>
       </div>
       <div style="display: flex;flex-direction: column;justify-content: center">
         <div style="text-align: center">
@@ -30,7 +43,7 @@
           Enviar entregable a revisión
         </button>
         </div>
-        <div style="display: flex; flex-direction: row; justify-content: center">
+        <!--<div style="display: flex; flex-direction: row; justify-content: center">
         @if (sent===1){
           <p class="text-green-500 text-xl">Enviado</p>
           <mat-icon class="text-green-500">check_circle_outline</mat-icon>
@@ -38,7 +51,7 @@
           <p class="text-red-500 text-xl">Error al enviar</p>
           <mat-icon class="text-red-500">cancel</mat-icon>
         }
-        </div>
+        </div>-->
       </div>
     </mat-card-content>
   </mat-card>
