@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {
   DeliverablesApiService
 } from "../../../main-page-enterprise/components/deliverables/services/deliverables-api.service";
 import {IDeliverable} from "../../../main-page-enterprise/components/deliverables/model/ideliverable";
 import {FormControl, Validators} from "@angular/forms";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-send-deliverable',
@@ -12,6 +13,8 @@ import {FormControl, Validators} from "@angular/forms";
   styleUrl: './send-deliverable.component.css'
 })
 export class SendDeliverableComponent implements OnInit {
+  private _snackBar = inject(MatSnackBar);
+
   files: File[]=[];
   deliverable!:IDeliverable;
   developerMessage=new FormControl("",[Validators.required]);
@@ -49,10 +52,16 @@ export class SendDeliverableComponent implements OnInit {
       let message = this.developerMessage.value??'';
       this.delvsApi.sendDeliverable(deliverableId,message,this.files).subscribe({
         next:(response)=> {
-          this.sent=1
+          //this.sent=1
+          this._snackBar.open("Enviado","Close",{
+            duration: 3000,
+          })
         },
         error:(response)=> {
-          this.sent=2
+          //this.sent=2
+          this._snackBar.open("Error","Close",{
+            duration: 2000,
+          })
         }
       })
     }

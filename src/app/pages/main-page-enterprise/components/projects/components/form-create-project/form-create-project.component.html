@@ -35,7 +35,7 @@
               <div class="flex flex-col">
                 <label>Lenguajes</label>
                 <mat-form-field>
-                  <mat-select id="lenguajesProgramacion"
+                  <mat-select id="lenguajesProgramacion" style="width: 200px;height: 40px"
                               (selectionChange)="selectedLanguages.push($event.value)">
                     @for (language of programmingLanguagesList; track language.id) {
                       <mat-option (click)="addingLanguages(language.name)"
@@ -63,7 +63,7 @@
               <div class="flex flex-col">
                 <label>Frameworks</label>
                 <mat-form-field>
-                  <mat-select id="frameworksProgramacion"
+                  <mat-select id="frameworksProgramacion" style="width: 200px;height: 40px"
                               (selectionChange)="selectedFrameworks.push($event.value)">
                     @for (framework of frameworksList; track framework.id) {
                       <mat-option (click)="addingFrameworks(framework.name)"
