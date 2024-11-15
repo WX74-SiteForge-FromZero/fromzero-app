@@ -84,7 +84,7 @@ export class FormCreateProjectComponent implements OnInit{
 
 
   onSubmit() {
-    if (this.form.valid && this.languages.length>0 && this.frameworks.length>0) {
+    if (this.form.valid /*&& this.languages.length>0 && this.frameworks.length>0*/) {
 
       const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
         width: '400px',

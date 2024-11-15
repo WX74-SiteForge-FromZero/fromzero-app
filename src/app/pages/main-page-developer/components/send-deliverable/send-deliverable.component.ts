@@ -12,6 +12,7 @@ import {FormControl, Validators} from "@angular/forms";
   styleUrl: './send-deliverable.component.css'
 })
 export class SendDeliverableComponent implements OnInit {
+  files: File[]=[];
   deliverable!:IDeliverable;
   developerMessage=new FormControl("",[Validators.required]);
   deliverableId?: number;
@@ -29,13 +30,24 @@ export class SendDeliverableComponent implements OnInit {
     })
   }
 
+  onFileSelected(event:any){
+    this.files=Array.from(event.target.files);
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    if(fileInput){
+      fileInput.value = "";
+    }
+  }
+  deleteFile(index:number){
+    this.files.splice(index,1);
+  }
+
   submitDeliverable(){
     if (this.developerMessage.invalid){
       console.log("Input no valido")
     }else{
       let deliverableId=Number(this.deliverableId)
       let message = this.developerMessage.value??'';
-      this.delvsApi.sendDeliverable(deliverableId,message).subscribe({
+      this.delvsApi.sendDeliverable(deliverableId,message,this.files).subscribe({
         next:(response)=> {
           this.sent=1
         },

@@ -17,28 +17,37 @@
             <mat-card-content>
               <div class="found-project-container flex flex-row justify-around items-center">
                 <div class="flex flex-col justify-center">
-                  <h2 style="margin: 0 20px">Se busca desarrollador con las siguientes especialidades:</h2>
-                  <div class="flex flex-row justify-around">
-                    <div>
-                      <p><strong>Lenguajes de programación:</strong></p>
-                      <div style="height: 100px;overflow-x: hidden; overflow-y: auto">
-                        @for (language of project.languages; track language) {
-                          <p>{{ language }}</p>
-                        }
+                  @if (project.languages.length !== 0 || project.frameworks.length !== 0) {
+                    <h2 style="margin: 0 20px">Se busca desarrollador con las siguientes especialidades:</h2>
+                    <div class="flex flex-row justify-around">
+                      <div>
+                        <p><strong>Lenguajes de programación:</strong></p>
+                        <div style="height: 100px;overflow-x: hidden; overflow-y: auto">
+                          @for (language of project.languages; track language) {
+                            <p>{{ language }}</p>
+                          }@empty {
+                            <p>Por definirse</p>
+                          }
+                        </div>
+                      </div>
+                      <div>
+                        <p><strong>Tecnologías:</strong></p>
+                        <div style="height: 100px;overflow-x: hidden; overflow-y: auto">
+                          @for (framework of project.frameworks; track framework) {
+                            <p>{{ framework }}</p>
+                          }@empty {
+                            <p>Por definirse</p>
+                          }
+                        </div>
                       </div>
                     </div>
-                    <div>
-                      <p><strong>Tecnologías:</strong></p>
-                      <div style="height: 100px;overflow-x: hidden; overflow-y: auto">
-                        @for (framework of project.frameworks; track framework) {
-                          <p>{{ framework }}</p>
-                        }
-                      </div>
-                    </div>
-                  </div>
+                  } @else {
+                    <h2><i>Tecnologías por definirse</i></h2>
+                  }
                   <div class="flex justify-center">
                     <button mat-raised-button (click)="goToProject(project.id)">Ver proyecto</button>
                   </div>
+
                 </div>
                 <div class="flex flex-col justify-center">
                   <h3>Publicado por: {{ project.company.companyName }}</h3>
