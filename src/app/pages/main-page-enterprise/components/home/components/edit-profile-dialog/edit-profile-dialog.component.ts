@@ -1,8 +1,9 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject, Inject} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {IEnterpriseProfileUpdate} from "../../models/enterprise-profile-update.model";
 import {ProfileService} from "../../../../../../core/services/profiles/profile.service";
 import {ICompanyProfile} from "../../../../../../core/models/icompany-profile";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-edit-profile-dialog',
@@ -10,6 +11,7 @@ import {ICompanyProfile} from "../../../../../../core/models/icompany-profile";
   styleUrl: './edit-profile-dialog.component.css'
 })
 export class EditProfileDialogComponent {
+  private _snackBar = inject(MatSnackBar);
   constructor(
     public dialogRef: MatDialogRef<EditProfileDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ICompanyProfile,
@@ -37,9 +39,15 @@ export class EditProfileDialogComponent {
 
     this._profileService.updateEnterpriseProfile(idEnterprise, updateData).subscribe({
       next:(response)=>{
-        console.log(response);
+        //console.log(response);
+        this._snackBar.open("Perfil actualizado","Close",{
+          duration: 3000,
+        })
         this.dialogRef.close();
       },error:()=>{
+        this._snackBar.open("Error","Close",{
+          duration: 2000,
+        })
         this.data = originalData;
       }
     })

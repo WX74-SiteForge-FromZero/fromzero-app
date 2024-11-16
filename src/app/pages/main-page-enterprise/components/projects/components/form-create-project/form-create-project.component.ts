@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmationDialogComponent} from "../confirmation-dialog/confirmation-dialog.component";
 import {ProjectsApiService} from "../../../home/services/projects-api.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 interface IMethodology{
   name: string;
@@ -15,19 +16,51 @@ interface IMethodology{
   styleUrl: './form-create-project.component.css'
 })
 export class FormCreateProjectComponent implements OnInit{
+  private _snackBar = inject(MatSnackBar);
+
   userId:number;
   programmingLanguagesList=[
     {id:1,name:"Javascript"},
     {id:2,name:"Typescript"},
     {id:3,name:"HTML"},
     {id:4,name:"CSS"},
+    {id:5,name:"Python"},
+    {id:6,name:"PHP"},
+    {id:7,name:"Java"},
+    {id:8,name:"C_Sharp"},
+    {id:9,name:"C_PLUS_PLUS"},
+    {id:10,name:"C"},
+    {id:11,name:"Kotlin"},
+    {id:12,name:"Swift"},
+    {id:13,name:"Dart"},
+    {id:14,name:"Ruby"},
   ]
 
-  frameworksList=[
-    {id:1,name:"Vue_Js"},
-    {id:2,name:"Angular"},
-    {id:3,name:"React"},
-  ]
+  frameworksList = [
+    { id: 1, name: "Vue_Js" },
+    { id: 2, name: "Angular" },
+    { id: 3, name: "React" },
+    { id: 4, name: "Bootstrap" },
+    { id: 5, name: "Tailwind_CSS" },
+    { id: 6, name: "Express" },
+    { id: 7, name: "Django" },
+    { id: 8, name: "Flask" },
+    { id: 9, name: "Laravel" },
+    { id: 10, name: "Svelte" },
+    { id: 11, name: "Spring_Boot" },
+    { id: 12, name: "ASP_NET" },
+    { id: 13, name: "Flutter" },
+    { id: 14, name: "Jetpack_Compose" },
+    { id: 15, name: "React_Native" },
+    { id: 16, name: "Xamarin" },
+    { id: 17, name: "Tkinter" },
+    { id: 18, name: "Qt" },
+    { id: 19, name: "Swing" },
+    { id: 20, name: "JavaFX" },
+    { id: 21, name: "WPF" },
+    { id: 22, name: "Electron" }
+  ];
+
 
   projectCurrencyList=[
     {id:1,name:"PEN"},
@@ -84,7 +117,7 @@ export class FormCreateProjectComponent implements OnInit{
 
 
   onSubmit() {
-    if (this.form.valid && this.languages.length>0 && this.frameworks.length>0) {
+    if (this.form.valid /*&& this.languages.length>0 && this.frameworks.length>0*/) {
 
       const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
         width: '400px',
@@ -105,8 +138,20 @@ export class FormCreateProjectComponent implements OnInit{
             currency:this.form.get('currency')?.value,
             methodologies:this.methodologiesList
           }
-          this.projectsService.postProject(project).subscribe(response=>{
+          /*this.projectsService.postProject(project).subscribe(response=>{
             console.log(response)
+          })*/
+          this.projectsService.postProject(project).subscribe({
+            next: result => {
+              this._snackBar.open("Proyecto publicado","Close",{
+                duration: 3000,
+              })
+            },
+            error: error => {
+              this._snackBar.open("Error","Close",{
+                duration: 2000,
+              })
+            }
           })
         }
       });
